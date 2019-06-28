@@ -6,12 +6,15 @@
 # License: MIT
 #
 #
+import os
+from tinydb import TinyDB
+
 
 def getDb():
 	""" Return a Database (TinyDB) object """
 	dbFolder = "database"
 	if not os.path.exists(dbFolder):
-    	os.makedirs(dbFolder)
+		os.makedirs(dbFolder)
 
 	db = TinyDB(dbFolder + '/db.json')
 	return db

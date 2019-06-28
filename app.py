@@ -17,19 +17,18 @@ import utils
 app = Flask(__name__)
 
 
-@app.route("/")
 @app.route("/", methods = ["GET", "POST"])
-def accueil():
+def home():
 
-	# If form was submitted 
-	if request.methods == "POST":
+	# If form was submitted
+	if request.method == "POST":
 		limit = 10
 		if request.form['limit'] != "":
-    		limit = request.form['limit']
+			limit = int(request.form['limit'])
 		
 		articles = utils.getArticles(limit)
 		return render_template('index.html', articles=articles)
     
     # If request is GET
-    else:
-    	return render_template('index.html')
+	else:
+		return render_template('index.html')

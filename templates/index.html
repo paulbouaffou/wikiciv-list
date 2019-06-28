@@ -14,7 +14,7 @@
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="index.html" title="Page d'accueil"><i class="fa fa-home"></i> Accueil <span class="sr-only">(courant)</span></a>
+        <a class="nav-link" href="{{url_for('home')}}" title="Page d'accueil"><i class="fa fa-home"></i> Accueil <span class="sr-only">(courant)</span></a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="https://www.wikimedia.ci/" title="Wikimedia Côte d'Ivoire" target="_blank"><i class="fa fa-users"></i> Wikimedia CIV </a>
@@ -32,32 +32,48 @@
 <main role="main" class="container">
   <h4 class="h3 mb-3 font-weight-normal"></h4>
 <div class="text-center">
-  <form class="form-signin">
+  <form class="form-signin" method="POST">
     <img class="mb-4" src="{{url_for('static', filename='images/wikiciv.png')}}" alt="logo-wikimediaciv" width="200" height="200">
     <label for="inputNumber" class="sr-only">Choix du nombre</label>
-    <input type="number" id="inputNumber" class="form-control" placeholder="Saisissez votre nombre..." required autofocus>
+    <input name="limit" type="number" id="inputNumber" class="form-control" placeholder="Saisissez votre nombre..." required autofocus>
     <br>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Afficher</button>
   </form>
 </div>
-<div>
-  <table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Title</th>
-      <th scope="col">Templates</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+{% if articles %}
+  <div id="results-table">
+    <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Articles</th>
+        <th scope="col">Templates</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        
+        {% if articles|length > 0 %}
+        {% for article in articles %}
+        <tr>
+          <th scope="row">{{loop.index}}</th>
+          <td><a href="https://fr.wikipedia.org/wiki/{{article.title}}">{{article.title}}</a></td>
+          <td>
+            {% for template in article.templates[0:5] %}
+              <span class="badge badge-primary">{{template["*"]}}</span> 
+            {% endfor %}
+          </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <h3>There are no information in database</h3>
+        {% endif %}
+      
+    </tbody>
+  </table>
+  </div>
+{% endif %}
+
 </main>
 <br>
 <br>

@@ -5,9 +5,7 @@
 
 from flask import Flask, render_template, url_for, request
 import json
-import os
 import requests
-from tinydb import TinyDB
 import utils
 
 
