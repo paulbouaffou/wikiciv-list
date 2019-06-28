@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <title>ELC-Bot App | Edit-A-Thon List Côte d'Ivoire Bot Application</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <div class="container"> 
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="index.html" title="Page d'accueil"><i class="fa fa-home"></i> Accueil <span class="sr-only">(courant)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="https://www.wikimedia.ci/" title="Wikimedia Côte d'Ivoire" target="_blank"><i class="fa fa-users"></i> Wikimedia CIV </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#" title="À propos de l'application"> À propos </a>
+      </li>
+    </ul>
+  </div>
+  </div>
+</nav>
+<br>
+<br>
+<br>
+<main role="main" class="container">
+  <h4 class="h3 mb-3 font-weight-normal"></h4>
+<div class="text-center">
+  <form class="form-signin">
+    <img class="mb-4" src="{{url_for('static', filename='images/wikiciv.png')}}" alt="logo-wikimediaciv" width="200" height="200">
+    <label for="inputNumber" class="sr-only">Choix du nombre</label>
+    <input type="number" id="inputNumber" class="form-control" placeholder="Saisissez votre nombre..." required autofocus>
+    <br>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Afficher</button>
+  </form>
+</div>
+</main>
+<br>
+<br>
+<br>
+<br>
+<footer class="footer mt-auto py-3">
+  <div class="container">
+    <hr>
+    <br>
+    <span class="text-muted">Licence: MIT. Tous droits réservés © 2019 - <a href="#">Code source disponible sur GitHub</a></p></span>
+  </div>
+</footer>
+</body>
+</html>
+
