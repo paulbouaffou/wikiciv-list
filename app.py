@@ -13,6 +13,7 @@ from flask import Flask
 from flask import render_template
 from flask import request
 import utils
+import update
 
 app = Flask(__name__)
 
@@ -32,3 +33,8 @@ def home():
     # If request is GET
 	else:
 		return render_template('index.html')
+
+@app.route("/cron")
+def cron():
+	results = "Hey"
+	return results
