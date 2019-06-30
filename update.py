@@ -10,7 +10,7 @@ import utils
 
 
 def app():
-	""" Main entry point for the tool. 
+	""" Main entry point for the tool.
 		It gets all articles from CIV archives
 	"""
 
@@ -22,7 +22,7 @@ def app():
 	archives_links = json.loads(archives_json)['parse']['links']
 
 	# just the two first items of the array
-	links_test = archives_links[0: 100]
+	links_test = archives_links[0:]
 
 	# initiate counter
 	articles_count = 0
@@ -40,7 +40,7 @@ def app():
 
 		# if the page has any templates
 		if(len(page_templates) > 0):
-	
+
 			# Define which templates are considered problematic
 			modele_bandeau = [
 				"Modèle:Sources secondaires",
@@ -51,7 +51,7 @@ def app():
 			# search for problematic templates
 			for template in page_templates:
 				if template["*"] in modele_bandeau:
-					
+
 					# save article name into file
 					article = {
 						"title" : page_title,
@@ -60,7 +60,7 @@ def app():
 
 					utils.createArticle(article)
 					print(page_title + " was saved in the DB.")
-					
+
 					articles_count += 1
 	# Print total
 	printNotice("In total, " + str(articles_count) + " articles have issues.")

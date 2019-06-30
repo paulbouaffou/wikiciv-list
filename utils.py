@@ -21,17 +21,19 @@ def getDb():
 
 
 def getArticles(limit=10):
-	""" Return all articles in the database """ 
+	""" Return all articles in the database """
 	db = getDb()
 	results = db.all()
+	results_limit = results[0:limit]
 
-	if len(results) < limit:
-		return results[0:limit-1]
-	
-	return results
+	''' if len(results) < limit:
+		results_limit = results[0:limit-1]
+		return results_limit '''
+
+	return results_limit
 
 
 def createArticle(article):
-	""" Insert new article database """ 
+	""" Insert new article database """
 	db = getDb()
 	return db.insert(article)
