@@ -10,17 +10,17 @@
 </head>
 <body>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <div class="container"> 
-  <div class="collapse navbar-collapse" id="navbarCollapse">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+   <div class="container">
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+     <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
         <a class="nav-link" href="{{url_for('home')}}" title="Page d'accueil"><i class="fa fa-home"></i> Accueil <span class="sr-only">(courant)</span></a>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="https://www.wikimedia.ci/" title="Wikimedia Côte d'Ivoire" target="_blank"><i class="fa fa-users"></i> Wikimedia CIV </a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#" title="À propos de l'application"> À propos </a>
+      <li class="nav-item">
+        <a class="nav-link" href="#" title="À propos de l'applicatione"><i class="fa fa-file-text"></i> À Propos </a>
       </li>
     </ul>
   </div>
@@ -45,14 +45,14 @@
     <table class="table">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">#</th>
+        <th scope="col">N°</th>
         <th scope="col">Articles</th>
         <th scope="col">Templates</th>
       </tr>
     </thead>
     <tbody>
-      
-        
+
+
         {% if articles|length > 0 %}
         {% for article in articles %}
         <tr>
@@ -60,7 +60,7 @@
           <td><a href="https://fr.wikipedia.org/wiki/{{article.title}}">{{article.title}}</a></td>
           <td>
             {% for template in article.templates[0:5] %}
-              <span class="badge badge-primary">{{template["*"]}}</span> 
+              <span class="badge badge-primary">{{template["*"]}}</span>
             {% endfor %}
           </td>
         </tr>
@@ -68,7 +68,7 @@
         {% else %}
         <h3>There are no information in database</h3>
         {% endif %}
-      
+
     </tbody>
   </table>
   </div>
@@ -88,4 +88,3 @@
 </footer>
 </body>
 </html>
-
