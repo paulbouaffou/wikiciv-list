@@ -26,10 +26,6 @@ def getArticles(limit=10):
 	results = db.all()
 	results_limit = results[0:limit]
 
-	''' if len(results) < limit:
-		results_limit = results[0:limit-1]
-		return results_limit '''
-
 	return results_limit
 
 
