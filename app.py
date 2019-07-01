@@ -25,10 +25,16 @@ def home():
 		limit = 10
 		if request.form['limit'] != "":
 			limit = int(request.form['limit'])
-		
+
 		articles = utils.getArticles(limit)
 		return render_template('index.html', articles=articles)
-    
+
     # If request is GET
 	else:
 		return render_template('index.html')
+
+@app.route("/apropos")
+def apropos():
+
+	# Return page a propos
+	return render_template('apropos.html')

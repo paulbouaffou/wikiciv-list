@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <title>ELC-Bot App | Edit-A-Thon List Côte d'Ivoire Bot Application</title>
+  <title>WIKICIV-List</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -21,7 +21,7 @@
         <a class="nav-link" href="https://www.wikimedia.ci/" title="Wikimedia Côte d'Ivoire" target="_blank"><i class="fa fa-users"></i> Wikimedia CIV </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" title="À propos de l'applicatione"><i class="fa fa-file-text"></i> À Propos </a>
+        <a class="nav-link" href="{{url_for('apropos')}}" title="À propos de l'applicatione"><i class="fa fa-file-text"></i> À Propos </a>
       </li>
     </ul>
   </div>
@@ -31,7 +31,6 @@
 <br>
 <br>
 <main role="main" class="container">
-  <h4 class="h3 mb-3 font-weight-normal"></h4>
 <div class="text-center">
   <form class="form-signin" method="POST">
     <img class="mb-4" src="{{url_for('static', filename='images/wikiciv.png')}}" alt="logo-wikimediaciv" width="180" height="180">
@@ -41,6 +40,7 @@
     <button class="btn btn-lg btn-primary btn-block" type="submit">Afficher</button>
   </form>
 </div>
+
 {% if articles %}
   <div id="results-table">
     <table class="table">
@@ -71,8 +71,10 @@
         {% endif %}
 
     </tbody>
-  </table>
-  <a href="{{url_for('home')}}" class="btn btn-primary float-right">Fermer</a>
+   </table>
+  <br>
+  <br>
+  <a href="{{url_for('home')}}" class="btn btn-primary float-right"><i class="fa fa-close"></i> Fermer </a>
   </div>
 {% endif %}
 
@@ -85,7 +87,7 @@
   <div class="container">
     <hr>
     <br>
-    <span class="text-muted">Licence: MIT. Tous droits réservés © 2019 - <a href="https://github.com/paulbouaffou/elc-bot-app" target="_blank">Code source disponible sur GitHub</a></p></span>
+    <span class="text-muted">Licence: MIT. Tous droits réservés © 2019 - <a href="https://github.com/paulbouaffou/elc-bot-app" target="_blank">Code source disponible sur GitHub</a>.</p></span>
   </div>
 </footer>
 </body>
