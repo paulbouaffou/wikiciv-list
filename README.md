@@ -9,31 +9,25 @@ A simple utility for generating edit-athon lists
 
 ### Clone project
 
-```bash git clone https://github.com/paulbouaffou/wikiciv-list```
+```$ git clone https://github.com/paulbouaffou/wikiciv-list```
 
 ### Installation
 * `pip install -r requirements.txt`
 
-## Quickstart the tool
+### Quickstart the tool
 
-* ```bash FLASK_APP=app.py```
-* ```bash export FLASK_ENV=development
-  ```
-* ```bash 
-     flask run
+* ```$ FLASK_APP=app.py```
+* ```$ export FLASK_ENV=development```
+* ```$ flask run
   ```
 
-#### On localhost
-```bash
-localhost:5000
-```
+### On localhost
+```$ localhost:5000```
 
-#### On Heroku server
-```bash 
-https://wikiciv-list.herokuapp.com
-```
+### On Heroku server
+```$ https://wikiciv-list.herokuapp.com```
 
-# Contributors
+## Contributors
 
 * [Paul Bouaffou](https://github.com/paulbouaffou) - Project Lead
 * [Samuel Guébo](https://github.com/samuelguebo) - Contributor
