@@ -21,22 +21,15 @@ def getDb():
 
 
 def getArticles(limit=10):
-	""" Return all articles in the database """ 
+	""" Return all articles in the database """
 	db = getDb()
 	results = db.all()
+	results_limit = results[0:limit]
 
-	if len(results) < limit:
-		return results[0:limit-1]
-	
-	return results
+	return results_limit
 
 
 def createArticle(article):
-	""" Insert new article database """ 
+	""" Insert new article database """
 	db = getDb()
 	return db.insert(article)
-
-
-def printNotice(notice):
-	"""Print notice message in yellow """
-	print('\033[93m' + notice + '\033[0m')

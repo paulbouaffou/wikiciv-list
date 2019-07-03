@@ -1,0 +1,5 @@
+Flask==1.0.3
+gunicorn==19.9.0
+Jinja2==2.10.1
+requests==2.21.0
+tinydb==3.13.0

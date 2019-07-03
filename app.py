@@ -26,15 +26,16 @@ def home():
 		limit = 10
 		if request.form['limit'] != "":
 			limit = int(request.form['limit'])
-		
+
 		articles = utils.getArticles(limit)
 		return render_template('index.html', articles=articles)
-    
+
     # If request is GET
 	else:
 		return render_template('index.html')
 
-@app.route("/cron")
-def cron():
-	results = "Hey"
-	return results
+@app.route("/about")
+def about():
+
+	# Return "about: page
+	return render_template('about.html')

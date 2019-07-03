@@ -9,8 +9,8 @@ import requests
 import utils
 
 
-def main():
-	""" Main entry point for the tool. 
+def app():
+	""" Main entry point for the tool.
 		It gets all articles from CIV archives
 	"""
 	results = "An error occured"
@@ -23,8 +23,8 @@ def main():
 	archives_links = json.loads(archives_json)['parse']['links']
 
 	# just the two first items of the array
-	links_test = archives_links[0: 1000]
 
+	links_test = archives_links[0:]
 	# initiate counter
 	articles_count = 0
 
@@ -41,7 +41,7 @@ def main():
 
 		# if the page has any templates
 		if(len(page_templates) > 0):
-	
+
 			# Define which templates are considered problematic
 			modele_bandeau = [
 				"Modèle:Sources secondaires",
@@ -52,7 +52,7 @@ def main():
 			# search for problematic templates
 			for template in page_templates:
 				if template["*"] in modele_bandeau:
-					
+
 					# save article name into file
 					article = {
 						"title" : page_title,
@@ -60,7 +60,6 @@ def main():
 					}
 
 					utils.createArticle(article)
-					
 					articles_count += 1
 	# Print total
 	results = "In total, " + str(articles_count) + " articles were saved in the DB."
