@@ -18,8 +18,7 @@ A simple utility for generating edit-athon lists
 
 * ```$ FLASK_APP=app.py```
 * ```$ export FLASK_ENV=development```
-* ```$ flask run
-  ```
+* ```$ flask run```
 
 ### On localhost
 ```$ localhost:5000```
