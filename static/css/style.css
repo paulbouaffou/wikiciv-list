@@ -6,7 +6,17 @@ body {
 
 
 .nav-link {
-  padding: 12px 50px;
+
+  color: #fff;
+  font-weight: 1000;
+  white-space: nowrap;
+  
+}
+
+.mr-lg-3 {
+
+  margin-right: 600px !important;
+
 }
 
 .navbar-nav a:visited {
