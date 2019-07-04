@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-#
-# Description: Application pour lister les articles de CIV a problèmes pour
+## -*- coding: utf-8 -*-
+# Description: Application pour lister les articles de CIV à problèmes pour
 # Auteurs: Samuel Guebo & Paul Bouaffou# Licence: MIT
 
 from flask import Flask, render_template, url_for, request
