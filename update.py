@@ -13,6 +13,7 @@ def app():
 	""" Main entry point for the tool.
 		It gets all articles from CIV archives
 	"""
+	results = "An error occured"
 
 	civ_archives_url = "https://fr.wikipedia.org/w/api.php?action=parse&format=json&page=Projet:C%C3%B4te_d%27Ivoire/Articles_r%C3%A9cents/Archive&prop=links"
 	archives_json = runMediaWikiRequest(civ_archives_url)
@@ -22,8 +23,8 @@ def app():
 	archives_links = json.loads(archives_json)['parse']['links']
 
 	# just the two first items of the array
-	links_test = archives_links[0:]
 
+	links_test = archives_links[0:]
 	# initiate counter
 	articles_count = 0
 
@@ -59,12 +60,10 @@ def app():
 					}
 
 					utils.createArticle(article)
-					print(page_title + " was saved in the DB.")
-
 					articles_count += 1
 	# Print total
-	printNotice("In total, " + str(articles_count) + " articles have issues.")
-
+	results = "In total, " + str(articles_count) + " articles were saved in the DB."
+	return results
 
 def runMediaWikiRequest(url):
 	"""
@@ -73,11 +72,3 @@ def runMediaWikiRequest(url):
 	resultatJson = requests.get(url).content
 	# return the json text
 	return resultatJson
-
-
-def printNotice(notice):
-	"""Print notice message in yellow """
-	print('\033[93m' + notice + '\033[0m')
-
-
-app() #  Launch the app

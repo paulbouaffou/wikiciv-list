@@ -13,6 +13,7 @@ from flask import Flask
 from flask import render_template
 from flask import request
 import utils
+import update
 
 app = Flask(__name__)
 
@@ -33,8 +34,8 @@ def home():
 	else:
 		return render_template('index.html')
 
-@app.route("/apropos")
-def apropos():
+@app.route("/about")
+def about():
 
-	# Return page a propos
-	return render_template('apropos.html')
+	# Return "about: page
+	return render_template('about.html')

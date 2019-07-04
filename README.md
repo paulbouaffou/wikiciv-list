@@ -13,6 +13,7 @@ A simple utility for generating edit-athon lists
 
 ### Installation
 * `pip install -r requirements.txt`
+* `flask run --reload # optionally you add --port=5000`
 
 ### Quickstart the tool
 
@@ -30,7 +31,6 @@ A simple utility for generating edit-athon lists
 
 * [Paul Bouaffou](https://github.com/paulbouaffou) - Project Lead
 * [Samuel Guébo](https://github.com/samuelguebo) - Contributor
-
 
 ## License
 This project is open source and available under the [MIT License](LICENSE).
