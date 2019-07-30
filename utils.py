@@ -1,13 +1,14 @@
-##!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*- #
 
-# Author: Samuel Guebo,Paul Bouaffou
+# Author: Samuel Guebo & Paul Bouaffou
 # Description: Utility file
 # License: MIT
-#
-#
+
+# Functions Python in connection with Database TinyDB
+
 import os
-from tinydb import TinyDB
+from tinydb import TinyDB, Query
 
 
 def getDb():
@@ -33,3 +34,17 @@ def createArticle(article):
 	""" Insert new article database """
 	db = getDb()
 	return db.insert(article)
+
+def getNumberArticle():
+	""" Get number of article in the database """
+	db = getDb()
+	article_count = len(db)
+
+	return article_count
+
+'''def function():
+	"""Get number of article missing sources in the database"""
+	Article = Query()
+	article_source = db.search(Article.templates == "Modèle: ")
+
+	return'''

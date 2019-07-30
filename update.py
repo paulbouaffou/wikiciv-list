@@ -1,19 +1,26 @@
 #!/usr/bin/env python3
-## -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*- #
 # Description: Application pour lister les articles de CIV à problèmes pour
-# Auteurs: Samuel Guebo & Paul Bouaffou# Licence: MIT
+# Auteurs: Samuel Guebo & Paul Bouaffou
+# Licence: MIT
 
-from flask import Flask, render_template, url_for, request
 import json
 import requests
 import utils
 
 
+def runMediaWikiRequest(url):
+		"""
+		function to give resultat of url request
+		"""
+		resultatJson = requests.get(url).content
+		# return the json text
+		return resultatJson
+
 def app():
 	""" Main entry point for the tool.
 		It gets all articles from CIV archives
 	"""
-	results = "An error occured"
 
 	civ_archives_url = "https://fr.wikipedia.org/w/api.php?action=parse&format=json&page=Projet:C%C3%B4te_d%27Ivoire/Articles_r%C3%A9cents/Archive&prop=links"
 	archives_json = runMediaWikiRequest(civ_archives_url)
@@ -24,7 +31,8 @@ def app():
 
 	# just the two first items of the array
 
-	links_test = archives_links[0:]
+	links_test = archives_links
+
 	# initiate counter
 	articles_count = 0
 
@@ -44,8 +52,6 @@ def app():
 
 			# Define which templates are considered problematic
 			modele_bandeau = [
-				"Modèle:Sources secondaires",
-				"Modèle:Sources",
 				"Modèle:Méta bandeau d'avertissement",
 			]
 
@@ -53,7 +59,7 @@ def app():
 			for template in page_templates:
 				if template["*"] in modele_bandeau:
 
-					# save article name into file
+					# all the articles at problem in archive civ
 					article = {
 						"title" : page_title,
 						"templates" : page_templates
@@ -65,10 +71,6 @@ def app():
 	results = "In total, " + str(articles_count) + " articles were saved in the DB."
 	return results
 
-def runMediaWikiRequest(url):
-	"""
-	function to give resultat of url request
-	"""
-	resultatJson = requests.get(url).content
-	# return the json text
-	return resultatJson
+# Execute the application
+if __name__ == '__main__':
+	app.main()

@@ -1,9 +1,18 @@
+/*
+
+Auteur: Paul Bouaffou;
+
+Style CSS of both pages: base.html & index.html;
+
+*/
+
+
 html,
 body {
   height: 100%;
   font-family: Arial, Helvetica, sans-serif;
+  background-color: #fff;
 }
-
 
 .nav-link {
 
@@ -34,7 +43,6 @@ body {
 }
 
 body {
-  background-color: #ffffff;
   min-height: 50rem;
   padding-top: 4.5rem;
 }
@@ -46,7 +54,7 @@ body {
   align-items: center;
   padding-top: 40px;
   padding-bottom: 40px;
-  background-color: #ffffff;
+  background-color: #fff;
 }
 
 .form-signin {
@@ -73,5 +81,28 @@ body {
 }
 
 .footer {
-  background-color: #ffffff;
+  background-color: #fff;
 }
+
+.message-article {
+  font-family: "Arial Black", Arial, Georgia, "Times New Roman", sans-serif;
+  text-align: center;
+  border: 2px solid #1E90FF;
+  border-left: 20px solid #1E90FF;
+  padding: 15px;
+  background-color: pink;
+}  
+
+.article-number {
+  color: red;
+}
+
+.sentence-font-style {
+ font-weight: bold; 
+}
+
+.word-align {
+  text-align: left;
+}
+
+

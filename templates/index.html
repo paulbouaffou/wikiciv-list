@@ -1,53 +1,27 @@
+{# Auteurs: Samuel Guébo & Paul Bouaffou #}
+
 {% extends "base.html" %}
 {% block content %}
-<div class="text-center">
-  <form class="form-signin" method="POST">
-    <img class="mb-4" src="{{url_for('static', filename='images/wikiciv.png')}}" alt="logo-wikimediaciv" width="180" height="180">
-    <label for="inputNumber" class="sr-only">Choix du nombre</label>
-    <input name="limit" type="number" id="inputNumber" class="form-control" placeholder="Saisissez votre nombre..." required autofocus>
-    <br>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Afficher</button>
-  </form>
+<div class="row message-article">
+	<div class="col-sm-2">
+		<a href="https://fr.wikipedia.org" alt="logo-wikipedia" title="Site de Wikipédia"><img src="{{url_for('static', filename='images/wikipedia1.png')}}" alt="logo-wikimediaciv" width="80" height="80"></a>
+	</div>
+	<div class="col-sm-10">
+		<div class="word-align">
+			<h4 class="sentence-font-style">Nous avions <span class="article-number">{{number_article}} articles</span> à améliorer.</h4>
+			{% if number_article == 0 %}
+				<h5>Merci à tous les bénévoles de <a href="https://www.wikimedia.ci" title="Wikimedia Côte d'Ivoire" target="_blank">Wikimedia Côte d'Ivoire</a> pour leur contribution active à la maintenance des articles à améliorer.</h5>
+			{% else %}
+				<h5>Ainsi pour leur maintenance, nous comptons sur vous, les bénévoles de <a href="https://www.wikimedia.ci" title="Wikimedia Côte d'Ivoire" target="_blank">Wikimedia Côte d'Ivoire</a> pour l'organisation d'un atelier (Edit-A-Thon).</h5>
+			{% endif %}
+		</div>
+	</div>
 </div>
-<br>
-
-{% if articles %}
-  <div id="results-table">
-    <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">N°</th>
-        <th scope="col">Articles</th>
-        <th scope="col">Templates</th>
-      </tr>
-    </thead>
-    <tbody>
-
-
-        {% if articles|length > 0 %}
-        {% for article in articles %}
-        <tr>
-          <th scope="row">{{loop.index}}</th>
-          <td><a href="https://fr.wikipedia.org/wiki/{{article.title}}">{{article.title}}</a></td>
-          <td>
-            {% for template in article.templates[0:5] %}
-              <span class="badge badge-primary">{{template["*"]}}</span>
-            {% endfor %}
-          </td>
-        </tr>
-        {% endfor %}
-        {% else %}
-        <h3>There are no information in database</h3>
-        {% endif %}
-
-    </tbody>
-   </table>
-  <br>
-  <br>
-  <br>
-  <hr>
-  <br>
-  <a href="{{url_for('home')}}" class="btn btn-primary float-right"><i class="fa fa-close"></i> Fermer </a>
+  <div class="text-center">
+  <div class="form-signin">
+    <img class="mb-4" src="{{url_for('static', filename='images/wikiciv.png')}}" alt="logo-wikimediaciv" width="180" height="180">
+    <br>
+    <a href="{{url_for('result')}}" class="btn btn-lg btn-primary btn-block">Démarrer</a>
   </div>
-{% endif %}
+</div>
 {% endblock %}
