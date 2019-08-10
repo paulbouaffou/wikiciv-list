@@ -43,8 +43,8 @@ def getNumberArticle():
 	return article_count
 
 '''def function():
-	"""Get number of article missing sources in the database"""
+	"""Get category number of article in the database"""
 	Article = Query()
-	article_source = db.search(Article.templates == "Modèle: ")
+	article_source = db.search(Article.wikitext == )
 
 	return'''

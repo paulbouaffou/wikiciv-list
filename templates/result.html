@@ -1,27 +1,8 @@
 {% extends "base.html" %}
-{% block result %}
+{% block content %}
 
 <div class="container">
 {% if request.method == "POST" %}
-<div class="container-1">
-  <form method="POST">
-  <label for="inputNumber">Nombre d'article(s)</label>
-
-    <input name="limit" type="number" id="inputNumber" placeholder="Impossible de saisir un nombre..." min="1" max="{{number_article}}" disabled>
-
-    <!--<label for="tmodele">Catégorie(s)</label>
-    <select id="tmodele" name="templates_modele" required>
-      <option value="">Choisissez la catégorie des articles wikipédia à améliorer...</option>
-      <option value="">Articles à améliorer: Toutes les catégories</option>
-      <option value="">Articles à améliorer: Rédaction</option>
-      <option value="">Articles à améliorer: Sources</option>
-      <option value="">Articles à améliorer: Promotionnel</option>
-      <option value="">Articles à améliorer: Wikification</option>
-      <option value="">Articles à améliorer: Orphelin</option>
-    </select>-->
-   <input type="submit" value="Résultats affichés" disabled>
-  </form>
-</div>
 <br>
   {% if articles %}
     <div id="results-table">
@@ -54,35 +35,53 @@
 
       </tbody>
      </table>
-    <br>
     <hr>
-    <br>
     <a href="{{url_for('result')}}" class="btn btn-primary float-right"><i class="fa fa-close"></i> Fermer </a>
+    <br>
     </div>
-  </div>
   {% endif %}
 
 {% else %}
+
+  {% if number_article < 2 %}
+
+<div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Nous avons 
+  <strong>{{number_article}} article wikipédia</strong>à améliorer.
+</div>
+  {% else %}
+
+  <div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Nous avons 
+  <strong>{{number_article}} articles wikipédia</strong> à améliorer.
+</div>
+  {% endif %}
+
 <div class="container-1">
+
   <form method="POST">
-  <label for="inputNumber">Nombre d'article(s)</label>
+
+    <label for="tmodele">Catégorie d'article(s)</label>
+
+    <select id="tmodele" name="templates_modele" required>
+      <option value="choice">Choisissez une catégorie...</option>
+      <option value="politic">Politique</option>
+      <option value="culture">Culture</option>
+      <option value="techno">Technologie</option>
+       <option value="study">Éducation</option>
+    </select>
+
+    <label for="inputNumber">Nombre d'article(s)</label>
 
     <input name="limit" type="number" id="inputNumber" placeholder="Saisissez un nombre..." min="1" max="{{number_article}}" required>
 
-    <!--<label for="tmodele">Catégorie(s)</label>
-    <select id="tmodele" name="templates_modele" required>
-      <option value="">Choisissez la catégorie des articles wikipédia à améliorer...</option>
-      <option value="">Articles à améliorer: Toutes les catégories</option>
-      <option value="">Articles à améliorer: Rédaction</option>
-      <option value="">Articles à améliorer: Sources</option>
-      <option value="">Articles à améliorer: Promotionnel</option>
-      <option value="">Articles à améliorer: Wikification</option>
-      <option value="">Articles à améliorer: Orphelin</option>
-    </select>-->
-   <input type="submit" value="Afficher les résultats">
+    <input type="submit" value="Afficher les résultats">
+
   </form>
+
 </div>
 <br>
+</div>
 
 {% endif %}
 

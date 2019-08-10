@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*- #
-# Description: Application pour lister les articles de CIV à problèmes pour
+# Description: Générateur d'articles wikipedia à améliorer pour CIV
 # Auteurs: Samuel Guebo & Paul Bouaffou
 # Licence: MIT
 
+# from apscheduler.schedulers.blocking import BlockingScheduler
 import json
 import requests
 import utils
-
 
 def runMediaWikiRequest(url):
 		"""
@@ -17,6 +17,9 @@ def runMediaWikiRequest(url):
 		# return the json text
 		return resultatJson
 
+# sched = BlockingScheduler()
+
+# @sched.scheduled_job('cron', month='jan-dec',date_of_month='15', hour=22)
 def app():
 	""" Main entry point for the tool.
 		It gets all articles from CIV archives
@@ -62,7 +65,7 @@ def app():
 					# all the articles at problem in archive civ
 					article = {
 						"title" : page_title,
-						"templates" : page_templates
+						"templates" : page_templates,
 					}
 
 					utils.createArticle(article)
@@ -73,4 +76,7 @@ def app():
 
 # Execute the application
 if __name__ == '__main__':
-	app.main()
+	app()
+
+# Execute the cron
+# sched.start()

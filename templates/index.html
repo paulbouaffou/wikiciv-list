@@ -1,27 +1,14 @@
-{# Auteurs: Samuel Guébo & Paul Bouaffou #}
 
 {% extends "base.html" %}
 {% block content %}
-<div class="row message-article">
-	<div class="col-sm-2">
-		<a href="https://fr.wikipedia.org" alt="logo-wikipedia" title="Site de Wikipédia"><img src="{{url_for('static', filename='images/wikipedia1.png')}}" alt="logo-wikimediaciv" width="80" height="80"></a>
-	</div>
-	<div class="col-sm-10">
-		<div class="word-align">
-			<h4 class="sentence-font-style">Nous avions <span class="article-number">{{number_article}} articles</span> à améliorer.</h4>
-			{% if number_article == 0 %}
-				<h5>Merci à tous les bénévoles de <a href="https://www.wikimedia.ci" title="Wikimedia Côte d'Ivoire" target="_blank">Wikimedia Côte d'Ivoire</a> pour leur contribution active à la maintenance des articles à améliorer.</h5>
-			{% else %}
-				<h5>Ainsi pour leur maintenance, nous comptons sur vous, les bénévoles de <a href="https://www.wikimedia.ci" title="Wikimedia Côte d'Ivoire" target="_blank">Wikimedia Côte d'Ivoire</a> pour l'organisation d'un atelier (Edit-A-Thon).</h5>
-			{% endif %}
-		</div>
-	</div>
-</div>
+
   <div class="text-center">
-  <div class="form-signin">
-    <img class="mb-4" src="{{url_for('static', filename='images/wikiciv.png')}}" alt="logo-wikimediaciv" width="180" height="180">
+  	<div class="form-signin">
+    	<img class="mb-4" src="{{url_for('static', filename='images/wikiciv.png')}}" alt="logo-wikimediaciv" width="180" height="180">
     <br>
-    <a href="{{url_for('result')}}" class="btn btn-lg btn-primary btn-block">Démarrer</a>
+    <!-- Trigger/Open The Modal -->
+    <a href="{{url_for('result')}}" class="btn btn-primary btn-lg btn-block"> Démarrer <i class="fa fa-arrow-circle-right"></i></a>
   </div>
-</div>
+ </div>
+
 {% endblock %}
