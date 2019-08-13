@@ -61,7 +61,7 @@ def app():
 			# search for problematic templates
 			for template in page_templates:
 				if template["*"] in modele_bandeau:
-
+					
 					# all the articles at problem in archive civ
 					article = {
 						"title" : page_title,
