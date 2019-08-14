@@ -6,10 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  <!-- Link for adding font-famliy in the template boostrap -->
-  <link href="https://fonts.googleapis.com/css?family=Crimson+Text&display=swap" rel="stylesheet">
-
   <link rel="shortcut icon" href="{{url_for('static', filename='images/wikiciv_logo.ico')}}">
   <link rel="stylesheet" href="{{url_for('static', filename='css/style1.css')}}">
   <link rel="stylesheet" href="{{url_for('static', filename='css/style2.css')}}">
@@ -17,28 +13,27 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
     <div class="container">
-        <a class="navbar-brand header-font-family" href="{{url_for('home')}}"><strong>WIKICIV-LIST</strong></a>
+        <a class="navbar-brand" href="https://fr.wikipedia.org" title="Site de Wikipédia"><img src="{{url_for('static', filename='images/wikipedia1.png')}}" alt="logo wikipedia" width="40px"> <strong>WIKICIV-LIST</strong></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+    <div class="collapse navbar-collapse text-align-right" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link mr-lg-3" href="{{url_for('home')}}" title="Page d'accueil"><i class="fa fa-home"></i> Accueil <span class="sr-only">(courant)</span></a>
+          <a class="nav-link" href="{{url_for('home')}}" title="Page d'accueil"><i class="fa fa-home"></i> Accueil <span class="sr-only">(courant)</span></a>
         </li>
         <li class="nav-item">
-        <a class="nav-link mr-lg-3" href="https://www.wikimedia.ci" title="Wikimedia Côte d'Ivoire" target="_blank"><i class="fa fa-users"></i> Wikimedia CIV </a>
+        <a class="nav-link" href="https://www.wikimedia.ci" title="Wikimedia Côte d'Ivoire" target="_blank"><i class="fa fa-users"></i> Wikimedia CIV </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link mr-lg-3" href="https://fr.wikipedia.org/wiki/Projet:C%C3%B4te_d%27Ivoire/Articles_r%C3%A9cents/Archive" title="Archives de tous les articles Wikipédia - CIV"><i class="fa fa-database"></i> Archives </a>
+        <a class="nav-link" href="https://fr.wikipedia.org/wiki/Projet:C%C3%B4te_d%27Ivoire/Articles_r%C3%A9cents/Archive" title="Archives de tous les articles Wikipédia - CIV"><i class="fa fa-database"></i> Archives </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link mr-lg-3" href="{{url_for('about')}}" title="À propos de l'application"><i class="fa fa-file-text"></i> À Propos </a>
+        <a class="nav-link" href="{{url_for('about')}}" title="À propos de l'application"><i class="fa fa-file-text"></i> À Propos </a>
       </li>
-    </div>
-        </li>
       </ul>
+    </div>
   </div>
 </nav>
 <br>
@@ -58,8 +53,8 @@
 </body>
 <!-- <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> -->
 <script src="https://tools-static.wmflabs.org/cdnjs/ajax/libs/jquery/3.3.1/jquery.js"></script>
-  <script src="https://tools-static.wmflabs.org/cdnjs/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="{{url_for('static', filename='js/modal.js')}}"></script>
+<script src="https://tools-static.wmflabs.org/cdnjs/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="{{url_for('static', filename='js/copy.js')}}"></script>
 <!-- Script pour afficher les statistiques des articles à améliorer [en maintenance]
 <script src="{{url_for('static', filename='js/canvas.js')}}"></script>
 -->

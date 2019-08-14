@@ -3,7 +3,7 @@
 
 <div class="container">
 {% if request.method == "POST" %}
-<br>
+<h3>RÉSULTATS AFFICHÉS: Voici le nombre d'articles démandé (classé en ordre alphabétique).</h3>
   {% if articles %}
     <div id="results-table">
       <table class="table">
@@ -36,7 +36,7 @@
       </tbody>
      </table>
     <hr>
-    <a href="{{url_for('result')}}" class="btn btn-primary float-right"><i class="fa fa-close"></i> Fermer </a>
+    <a href="{{url_for('result')}}" class="btn btn-primary float-right"><i class="fa fa-close"></i> Fermer le résultat</a>
     <br>
     </div>
   {% endif %}
