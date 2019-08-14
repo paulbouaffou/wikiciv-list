@@ -3,7 +3,9 @@
 
 <div class="container">
 {% if request.method == "POST" %}
-<h3>RÉSULTATS AFFICHÉS: Voici le nombre d'articles démandé (classé en ordre alphabétique).</h3>
+<div class="jumbotron text-position">
+<h4><strong>RÉSULTATS AFFICHÉS</strong></h4> 
+</div>
   {% if articles %}
     <div id="results-table">
       <table class="table">

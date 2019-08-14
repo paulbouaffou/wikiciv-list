@@ -69,3 +69,7 @@ input[type=submit]:hover {
 .closebtn:hover {
   color: black;
 }
+
+.text-position {
+  text-align: center;
+}
