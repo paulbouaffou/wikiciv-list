@@ -4,7 +4,6 @@
 # Auteurs: Samuel Guebo & Paul Bouaffou
 # Licence: MIT
 
-# from apscheduler.schedulers.blocking import BlockingScheduler
 import json
 import requests
 import utils
@@ -17,66 +16,66 @@ def runMediaWikiRequest(url):
 		# return the json text
 		return resultatJson
 
-# sched = BlockingScheduler()
 
-# @sched.scheduled_job('cron', month='jan-dec',date_of_month='15', hour=22)
-def app():
+def setup():
 	""" Main entry point for the tool.
 		It gets all articles from CIV archives
 	"""
 
-	civ_archives_url = "https://fr.wikipedia.org/w/api.php?action=parse&format=json&page=Projet:C%C3%B4te_d%27Ivoire/Articles_r%C3%A9cents/Archive&prop=links"
-	archives_json = runMediaWikiRequest(civ_archives_url)
+	try:
+		civ_archives_url = "https://fr.wikipedia.org/w/api.php?action=parse&format=json&page=Projet:C%C3%B4te_d%27Ivoire/Articles_r%C3%A9cents/Archive&prop=links"
+		archives_json = runMediaWikiRequest(civ_archives_url)
 
-	# convert from plain text to python array, and browse to get items 'parse'
-	# and its child 'links'
-	archives_links = json.loads(archives_json)['parse']['links']
+		# convert from plain text to python array, and browse to get items 'parse'
+		# and its child 'links'
+		archives_links = json.loads(archives_json)['parse']['links']
 
-	# just the two first items of the array
+		# just the two first items of the array
 
-	links_test = archives_links
+		links_test = archives_links
 
-	# initiate counter
-	articles_count = 0
+		# initiate counter
+		articles_count = 0
 
-	# loop through the small set
-	for link in links_test:
-		page_title = link['*']# build the url
-		page_templates_url = "https://fr.wikipedia.org/w/api.php?action=parse&format=json&page="
-		page_templates_url += page_title + "&prop=templates"
+		# loop through the small set
+		for link in links_test:
+			page_title = link['*']# build the url
+			page_templates_url = "https://fr.wikipedia.org/w/api.php?action=parse&format=json&page="
+			page_templates_url += page_title + "&prop=templates"
 
-		# run an Http request and get the template of each page
-		page_templates_json = runMediaWikiRequest(page_templates_url)
-		page_templates = json.loads(page_templates_json)['parse']['templates']
+			# run an Http request and get the template of each page
+			page_templates_json = runMediaWikiRequest(page_templates_url)
+			page_templates = json.loads(page_templates_json)['parse']['templates']
 
 
-		# if the page has any templates
-		if(len(page_templates) > 0):
+			# if the page has any templates
+			if(len(page_templates) > 0):
 
-			# Define which templates are considered problematic
-			modele_bandeau = [
-				"Modèle:Méta bandeau d'avertissement",
-			]
+				# Define which templates are considered problematic
+				modele_bandeau = [
+					"Modèle:Méta bandeau d'avertissement"
+				]
 
-			# search for problematic templates
-			for template in page_templates:
-				if template["*"] in modele_bandeau:
+				# search for problematic templates
+				for template in page_templates:
+					if template["*"] in modele_bandeau:
+						
+						# all the articles at problem in archive civ
+						article = {
+							"title" : page_title
+						}
+
+						if not utils.verifyDb(page_title):
+
+							utils.createArticle(article)
+
+						else:
+							print('Article enregistré !')
+	except KeyError:
+		print('Enregistrement effectué avec succès !')
+
+					#articles_count += 1
 					
-					# all the articles at problem in archive civ
-					article = {
-						"title" : page_title,
-						"templates" : page_templates,
-					}
-
-					utils.createArticle(article)
-					articles_count += 1
-	# Print total
-	results = "In total, " + str(articles_count) + " articles were saved in the DB."
-	return results
-
 # Execute the application
 if __name__ == '__main__':
-	app()
-
-# Execute the cron
-# sched.start()
+	setup()

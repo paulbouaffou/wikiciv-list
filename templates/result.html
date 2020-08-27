@@ -1,92 +1,41 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="container">
-{% if request.method == "POST" %}
-<div class="jumbotron text-position">
-<h4><strong>RÉSULTATS AFFICHÉS</strong></h4> 
-</div>
-  {% if articles %}
+<div class="form-signin">
+    <div class="alert alert-light" role="alert">
+      Voici la liste complète des <span class="alert-link">{{number_article}}</span> article(s) wikipédia à améliorer.
+    </div>
     <div id="results-table">
       <table class="table">
-      <thead class="thead-dark">
+      <thead class="thead-light">
         <tr>
           <th scope="col">N°</th>
           <th scope="col">Articles</th>
-          <th scope="col">Templates</th>
         </tr>
       </thead>
       <tbody>
 
 
-          {% if articles|length > 0 %}
-          {% for article in articles %}
+          {% if all_articles|length > 0 %}
+          {% for all_article in all_articles %}
           <tr>
             <th scope="row">{{loop.index}}</th>
-            <td><a href="https://fr.wikipedia.org/wiki/{{article.title}}">{{article.title}}</a></td>
-            <td>
-              {% for template in article.templates[0:5] %}
-                <span class="badge badge-primary">{{template["*"]}}</span>
-              {% endfor %}
-            </td>
+            <td><a href="https://fr.wikipedia.org/wiki/{{all_article.title}}">{{all_article.title}}</a></td>
           </tr>
           {% endfor %}
           {% else %}
-          <h3>Aucun articles à améliorer dans la base !!!</h3>
+          <h3>Aucun article à améliorer dans la base de données !!!</h3>
           {% endif %}
 
       </tbody>
      </table>
     <hr>
-    <a href="{{url_for('result')}}" class="btn btn-primary float-right"><i class="fa fa-close"></i> Fermer le résultat</a>
+    <a href="{{url_for('home')}}" class="btn btn-primary float-right">Fermer</a>
     <br>
+    <br>
+    <br>
+    <p class="mt-5 mb-3 text-muted">&copy; Gawa Côte d'Ivoire {{year}}</p>
     </div>
-  {% endif %}
-
-{% else %}
-
-  {% if number_article < 2 %}
-
-<div class="alert">
-  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Nous avons 
-  <strong>{{number_article}} article wikipédia</strong>à améliorer.
 </div>
-  {% else %}
-
-  <div class="alert">
-  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Nous avons 
-  <strong>{{number_article}} articles wikipédia</strong> à améliorer.
-</div>
-  {% endif %}
-
-<div class="container-1">
-
-  <form method="POST">
-
-   {# <label for="tmodele">Catégorie d'article(s)</label>
-    <select id="tmodele" name="categorie" required>
-      <option value="choice">Choisissez une catégorie...</option>
-       <option value="all">Toutes les catégories confondues</option>
-      <option value="politic">Politique</option>
-      <option value="culture_sport">Culture & Sport</option>
-      <option value="techno">Technologie</option>
-       <option value="study">Éducation</option>
-    </select>
-    #}
-
-    <label for="inputNumber">Nombre d'article(s)</label>
-
-    <input name="limit" type="number" id="inputNumber" placeholder="Saisissez un nombre..." min="1" max="{{number_article}}" required>
-
-    <input type="submit" value="Afficher les résultats">
-
-  </form>
-
-</div>
-<br>
-</div>
-
-{% endif %}
 
 {% endblock %}
-

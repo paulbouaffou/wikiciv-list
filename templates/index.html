@@ -2,13 +2,65 @@
 {% extends "base.html" %}
 {% block content %}
 
-  <div class="text-center">
-  	<div class="form-signin">
-    	<img class="mb-4" src="{{url_for('static', filename='images/wikiciv.png')}}" alt="logo-wikimediaciv" width="180" height="180">
+{% if request.method == "POST" %}
+  {% if articles %}
+<div class="form-signin">
+    <div class="alert alert-light" role="alert">
+      Nous avions <strong>{{number_article}}</strong> article(s) wikipédia à améliorer. Pour les découvrir, <a href="{{url_for('result')}}" class="alert-link">cliquez ici</a>.
+      <br><hr>
+      Cependant, le résultat ci-dessous vous présente en ordre alphabétique <strong>{{limit}}</strong> 
+      {% if limit <= 1 %}
+      article.
+      {% else %}
+      articles.
+      {% endif %}
+    </div>
+    <div id="results-table">
+      <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">N°</th>
+          <th scope="col">Articles</th>
+        </tr>
+      </thead>
+      <tbody>
+
+
+          {% if articles|length > 0 %}
+          {% for article in articles %}
+          <tr>
+            <th scope="row">{{loop.index}}</th>
+            <td><a href="https://fr.wikipedia.org/wiki/{{article.title}}" target="_blank">{{article.title}}</a></td>
+          </tr>
+          {% endfor %}
+          {% else %}
+          <h3>Aucun article à améliorer dans la base de données !!!</h3>
+          {% endif %}
+
+      </tbody>
+     </table>
+    <hr>
+    <a href="{{url_for('home')}}" class="btn btn-primary float-right">Fermer</a>
     <br>
-    <!-- Trigger/Open The Modal -->
-    <a href="{{url_for('result')}}" class="btn btn-primary btn-lg btn-block"> Démarrer <i class="fa fa-arrow-circle-right"></i></a>
-  </div>
- </div>
+    <br>
+    <br>
+    <p class="mt-5 mb-3 text-muted">&copy; Gawa Côte d'Ivoire {{year}}</p>
+    </div>
+  {% endif %}
+</div>
+{% else %}
+
+<form method="POST" class="form-signin" name="frm" onsubmit="return check()">
+      <img class="mb-4 image" src="{{url_for('static', filename='images/logo.png')}}" alt="Gawa">
+      <label for="inputNumber" class="sr-only">Saisir un nombre</label>
+      <input type="text" id="inputNumber" class="form-control" placeholder="Saisir un nombre entier inférieur ou égal à {{number_article}}" name="limit">
+      <span id="msg"></span>
+      <div class="checkbox mb-3">
+      </div>
+      <button class="btn btn-primary" type="submit">Afficher</button>
+      <p class="mt-5 mb-3 text-muted">&copy; Gawa Côte d'Ivoire {{year}}</p>
+</form>
+
+{% endif %}
 
 {% endblock %}

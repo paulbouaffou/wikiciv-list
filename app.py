@@ -11,14 +11,12 @@ import update
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/", methods = ["POST", "GET"])
 def home():
-		
-	#return home page
-	return render_template('index.html', title = "Accueil | Wikiciv List ")
+	# return home page
 	
-@app.route("/result", methods = ["POST", "GET"])
-def result():
+	# return year actual
+	year = utils.giveYear()
 
 	# Number of article in the database
 	number_article = utils.getNumberArticle()
@@ -30,17 +28,33 @@ def result():
 			limit = int(request.form['limit'])
 		# Getting the articles in database
 		articles = utils.getArticles(limit)
-		return render_template('result.html', title = "Résultats | Wikiciv List ", articles = articles, number_article = number_article)
+		return render_template('index.html', title = "Résultats | Gawa Côte d'Ivoire ", articles = articles, number_article = number_article, year = year, limit = limit)
 	# If request is GET
 	else:
-		return render_template('result.html', title = "Résultats | Wikiciv List ", number_article = number_article)
+		return render_template('index.html', title = "Accueil | Gawa Côte d'Ivoire ", number_article = number_article, year = year)
 
-@app.route("/about")
-def about():
+@app.route("/result")
+def result():
 
-	# Return "about: page
-	return render_template('about.html', title = "À Propos | Wikiciv List")
+	# return year actual
+	year = utils.giveYear()
+
+	# Number of article in the database
+	number_article = utils.getNumberArticle()
 	
+	# Number of article in the database
+	all_articles = utils.getAllArticles()
+	
+	return render_template('result.html', title = "Résultats de tous les articles à améliorer | Gawa Côte d'Ivoire ", number_article = number_article, all_articles = all_articles, year = year)
+	
+@app.route("/updated")
+def updated():
+	# return page without information. But a bot is operating background this page
+
+	# Turn the bot
+	miseajour = update.setup()
+
+	return render_template('api.html', title = "Résultats API | Gawa Côte d'Ivoire ", miseajour = miseajour)
 
 # Execute the application
 if __name__ == '__main__':
