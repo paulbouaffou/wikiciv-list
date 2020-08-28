@@ -36,6 +36,16 @@ def app():
 
 	return nombre
 
+
+def difference():
+	""" Give the number of articles which has not problem """
+	nombre1 = utils.getNumberArticle()
+	nombre2 = app()
+	nombreFinal = nombre2 - nombre1
+
+	return nombreFinal
+
+
 def setup():
 	""" Main entry point for the tool.
 		It gets all articles from CIV archives

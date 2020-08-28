@@ -58,8 +58,17 @@ def updated():
 
 @app.route("/admin")
 def admin():
+
+	# Number of article in the database
+	number_article = utils.getNumberArticle()
+
+	# Number of article in archive Ivory Cost
+	all_article_archive = update.app()
+
+	# Number of article in archive Ivory Cost which has not problem
+	rest_article_archive = update.difference()
 	
-	return render_template('admin.html', title = "Administration | Gawa Côte d'Ivoire ")
+	return render_template('admin.html', title = "Administration | Gawa Côte d'Ivoire ", number_article = number_article, all_article_archive = all_article_archive, rest_article_archive = rest_article_archive)
 
 # Execute the application
 if __name__ == '__main__':
