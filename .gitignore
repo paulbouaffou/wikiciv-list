@@ -13,11 +13,5 @@ dist/
 build/
 *.egg-info/
 
-*.cfg
 
-bin/
-include/
-lib/
-lib64/
-share/
 
