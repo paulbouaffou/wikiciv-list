@@ -6,14 +6,15 @@
   {% if articles %}
 <div class="form-signin">
     <div class="alert alert-light" role="alert">
-      Nous avons <strong>{{number_article}}</strong> article(s) wikipédia à améliorer. Pour les découvrir, <a href="{{url_for('result')}}" class="alert-link">cliquez ici</a>.
-      <br><hr>
-      Cependant, le résultat ci-dessous vous présente en ordre alphabétique <strong>{{limit}}</strong> 
+       <h2>RÉSULTAT</h2>
+      <hr>
+      Le résultat ci-dessous vous présente en ordre alphabétique <strong>{{limit}}</strong> 
       {% if limit <= 1 %}
-      article.
+      article
       {% else %}
-      articles.
+      articles
       {% endif %}
+      wikipédia à améliorer.
     </div>
     <div id="results-table">
       <table class="table">
