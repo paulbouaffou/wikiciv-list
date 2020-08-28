@@ -56,6 +56,11 @@ def updated():
 
 	return render_template('api.html', title = "Résultats API | Gawa Côte d'Ivoire ", miseajour = miseajour)
 
+@app.route("/admin")
+def admin():
+	
+	return render_template('admin.html', title = "Administration | Gawa Côte d'Ivoire ")
+
 # Execute the application
 if __name__ == '__main__':
 	app.run()

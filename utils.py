@@ -62,6 +62,15 @@ def giveYear():
 
 	return annee
 
+def giveDate():
+
+	""" Give the date of the moment """
+	d = datetime.datetime.now()
+
+	annee = d.date
+
+	return annee
+
 
 def verifyDb(page_title):
 
@@ -72,6 +81,8 @@ def verifyDb(page_title):
 	verify = db.contains(Verified.title == page_title)
 
 	return verify
+
+
 
 
 

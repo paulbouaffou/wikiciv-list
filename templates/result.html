@@ -3,7 +3,13 @@
 
 <div class="form-signin">
     <div class="alert alert-light" role="alert">
-      Voici la liste complète des <span class="alert-link">{{number_article}}</span> article(s) wikipédia à améliorer.
+      Voici la liste complète des <strong>{{number_article}}</strong> 
+      {% if number_article <= 1 %}
+      article
+      {% else %}
+      articles
+      {% endif %} 
+      wikipédia à améliorer.
     </div>
     <div id="results-table">
       <table class="table">

@@ -16,6 +16,25 @@ def runMediaWikiRequest(url):
 		# return the json text
 		return resultatJson
 
+def app():
+	""" Main entry point for the tool.
+		It gets all articles from CIV archives
+	"""
+
+	civ_archives_url = "https://fr.wikipedia.org/w/api.php?action=parse&format=json&page=Projet:C%C3%B4te_d%27Ivoire/Articles_r%C3%A9cents/Archive&prop=links"
+	archives_json = runMediaWikiRequest(civ_archives_url)
+
+	# convert from plain text to python array, and browse to get items 'parse'
+	# and its child 'links'
+	archives_links = json.loads(archives_json)['parse']['links']
+
+	# just the two first items of the array
+
+	links_test = archives_links
+
+	nombre = len(links_test) - 9
+
+	return nombre
 
 def setup():
 	""" Main entry point for the tool.

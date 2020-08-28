@@ -1,6 +1,16 @@
 <!doctype html>
 <html lang="fr">
   <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151983319-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-151983319-1');
+    </script>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -31,10 +41,39 @@
         }
       }
     </style>
+    <script>
+      // Canvas.js | Statistics of page admin.html
+    window.onload = function () {
+
+    var chart = new CanvasJS.Chart("chartContainer", {
+      animationEnabled: true,
+      title:{
+        text: "ARTICLES WIKIPÉDIA - CÔTE D'IVOIRE",
+        horizontalAlign: "left"
+      },
+      data: [{
+        type: "doughnut",
+        startAngle: 60,
+        //innerRadius: 60,
+        indexLabelFontSize: 12,
+        indexLabel: "{label} - #percent%",
+        toolTipContent: "<b>{label}:</b> {y} (#percent%)",
+        dataPoints: [
+          { y: 2000, label: "Article non défaillant" },
+          { y: 97, label: "Article défaillant" },
+        ]
+      }]
+    });
+    chart.render();
+
+    }
+</script>
   </head>
   <body class="text-center">
     {% block content %}{% endblock %}
     <script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.js')}}"></script>
     <script type="text/javascript" src="{{url_for('static', filename='js/main.js')}}"></script>
+    <!-- Canvas.js -->
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </body>
 </html>

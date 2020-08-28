@@ -15,7 +15,7 @@ www.gawa.ci ou http://gawa.ci .
 
 ### Clone project
 
-```$ git clone https://github.com/paulbouaffou/gawa-ci```
+```$ git clone https://github.com/paulbouaffou/wikiciv-list```
 
 ### Installation
 * `pip install -r requirements.txt`
