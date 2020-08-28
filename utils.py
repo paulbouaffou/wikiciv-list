@@ -53,7 +53,7 @@ def getNumberArticle():
 	return article_count
 
 
-def giveYear():
+def getYear():
 
 	""" Give the year of the moment """
 	d = datetime.datetime.now()
@@ -62,14 +62,12 @@ def giveYear():
 
 	return annee
 
-def giveDate():
+def getDate():
 
 	""" Give the date of the moment """
-	d = datetime.datetime.now()
+	date_du_jour = datetime.datetime.today().strftime('%d/%m/%Y')
 
-	annee = d.date
-
-	return annee
+	return date_du_jour
 
 
 def verifyDb(page_title):

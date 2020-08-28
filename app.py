@@ -16,7 +16,7 @@ def home():
 	# return home page
 	
 	# return year actual
-	year = utils.giveYear()
+	year = utils.getYear()
 
 	# Number of article in the database
 	number_article = utils.getNumberArticle()
@@ -37,7 +37,7 @@ def home():
 def result():
 
 	# return year actual
-	year = utils.giveYear()
+	year = utils.getYear()
 
 	# Number of article in the database
 	number_article = utils.getNumberArticle()
@@ -67,8 +67,14 @@ def admin():
 
 	# Number of article in archive Ivory Cost which has not problem
 	rest_article_archive = update.difference()
+
+	# Date of the moment
+	date_of_now = utils.getDate()
+
+	# return year actual
+	year = utils.getYear()
 	
-	return render_template('admin.html', title = "Administration | Gawa Côte d'Ivoire ", number_article = number_article, all_article_archive = all_article_archive, rest_article_archive = rest_article_archive)
+	return render_template('admin.html', title = "Administration | Gawa Côte d'Ivoire ", number_article = number_article, all_article_archive = all_article_archive, rest_article_archive = rest_article_archive, date_of_now = date_of_now, year = year)
 
 # Execute the application
 if __name__ == '__main__':

@@ -5,7 +5,7 @@
     <div class="alert alert-light" role="alert">
       <h2>STATISTIQUES</h2>
       <hr>
-      <p>Données mises à jour le 28/08/2020</p>
+      <p>Données mises à jour le {{date_of_now}}</p>
     </div>
     <div class="alert alert-light" role="alert">
       <div id="chartContainer" style="height: 200px; width: 100%;"></div>
@@ -13,26 +13,32 @@
     <div class="row">
       <div class="col-sm-4">
         <div class="alert alert-light" role="alert">
-          <strong>{{all_article_archive}}</strong>
+          <h3>{{all_article_archive}}</h3>
           <hr>
-          <p>Article dans l'archive wikipédia Côte d'Ivoire</p>
+          <p><a href="https://fr.wikipedia.org/wiki/Projet:C%C3%B4te_d%27Ivoire/Articles_r%C3%A9cents/Archive" target="_blank">Articles dans l'Archive Wikipédia Côte d'Ivoire</a></p>
         </div>
       </div>
       <div class="col-sm-4">
         <div class="alert alert-light" role="alert">
-          <strong>{{number_article}}</strong>
+          <h3>{{number_article}}</h3>
           <hr>
-          <p>Articles wikipédia défaillants dans l'archive</p>
+          <p><a href="{{url_for('result')}}">Articles Wikipédia défaillants dans l'Archive</a></p>
         </div>
       </div>
       <div class="col-sm-4">
         <div class="alert alert-light" role="alert">
-          <strong>{{rest_article_archive}}</strong>
+          <h3>{{rest_article_archive}}</h3>
           <hr>
-          <p>Articles wikipédia non défaillants dans l'archive</p>
+          <p>Articles Wikipédia non défaillants dans l'Archive</p>
         </div>
       </div>
     </div>
+     <hr>
+    <a href="{{url_for('home')}}" class="btn btn-primary float-right">Fermer</a>
+    <br>
+    <br>
+    <br>
+    <p class="mt-5 mb-3 text-muted">&copy; Gawa Côte d'Ivoire {{year}}</p>
 </div>
 
 {% endblock %}
