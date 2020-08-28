@@ -4,8 +4,8 @@
 
 C'est une application web qui a la capacité de générer les articles Wikipédia propre à la Côte d'Ivoire, présentant un bandeau de maintenance et nécessitant une amélioration.
 Ce logiciel a été développé lors d'un Hack-a-Thon en ligne dénommé WIKIHACK CÔTE D'IVOIRE 2020.
-Pour découvrir et tester cette application, je vous invite à vous rendre à l'adresse web suivante:
-www.gawa.ci ou http://gawa.ci .
+Pour découvrir et tester cette application, nous vous invitons à vous rendre à l'adresse web suivante:
+www.gawa.ci .
 
 
 ### Requirements
