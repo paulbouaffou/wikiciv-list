@@ -2,6 +2,7 @@
 {% extends "base.html" %}
 {% block content %}
 
+{#
 {% if request.method == "POST" %}
   {% if articles %}
 <div class="form-signin">
@@ -50,18 +51,23 @@
   {% endif %}
 </div>
 {% else %}
+  #}
 
 <form method="POST" class="form-signin" name="frm" onsubmit="return check()">
-      <img class="mb-4 image" src="{{url_for('static', filename='images/logo.png')}}" alt="Gawa">
+      <!--<img class="mb-4 image" src="{{url_for('static', filename='images/logo.png')}}" alt="Gawa">
       <label for="inputNumber" class="sr-only">Saisir un nombre</label>
       <input type="text" id="inputNumber" class="form-control" placeholder="Saisir un nombre entier inférieur ou égal à {{number_article}}" name="limit">
       <span id="msg"></span>
       <div class="checkbox mb-3">
       </div>
       <button class="btn btn-primary" type="submit">Afficher</button>
-      <p class="mt-5 mb-3 text-muted">&copy; Gawa Côte d'Ivoire {{year}}</p>
+      <p class="mt-5 mb-3 text-muted">&copy; Gawa Côte d'Ivoire {{year}}</p>-->
+  <h1 class="mt-5 mb-3 text-muted">Cette plateforme est en cours de maintenance</h1>
+  <p class="mt-5 mb-3 text-muted">Nous mettons tout en oeuvre pour rétablir l'accès à cette plateforme dans les meilleurs délais.<br>
+  Veuillez recevoir nos sincères excuses pour les désagréments causés !</p>
 </form>
-
+{#
 {% endif %}
+ #}
 
 {% endblock %}
